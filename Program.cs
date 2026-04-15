@@ -1,12 +1,16 @@
 ﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+Console.WriteLine("🚀 Starting Tests...\n");
 
 Solution sol = new Solution();
 
-sol.TwoSum([2, 7, 11, 15], 9);
+Console.WriteLine("=== 🧮 Two Sum Test ===");
+var twoSumResult = sol.TwoSum([2, 7, 11, 15], 9);
+Console.WriteLine($"Input: [2,7,11,15], Target: 9");
+Console.WriteLine($"Output: [{twoSumResult[0]}, {twoSumResult[1]}]\n");
+
 
 Console.WriteLine("============================================");
-Console.WriteLine("==============TREES EXERCISES===============");
+Console.WriteLine("🌳 TREES EXERCISES");
 Console.WriteLine("============================================");
 
 Tree tree = new Tree(
@@ -18,21 +22,59 @@ Tree tree = new Tree(
 DFS dfs = new DFS();
 dfs.DepthFirstSearch(tree.root);
 
-Console.WriteLine("The sum of the tree is: " + dfs.SumOfTheTree);
+Console.WriteLine($"Tree Root: {tree.root.val}");
+Console.WriteLine($"Sum of the tree: {dfs.SumOfTheTree}\n");
+
 
 Console.WriteLine("============================================");
-Console.WriteLine("==============MATH EXERCISES===============");
+Console.WriteLine("🧮 MATH EXERCISES");
 Console.WriteLine("============================================");
 
 Maths math = new Maths();
 int sigmaExample = 3;
-Console.WriteLine("The sigma of " + sigmaExample + " is " + math.Sigma(sigmaExample));
-List<int> res = new List<int>();
-res.Add(2);
-int[] array = res.ToArray();
-string s = string.Empty;
 
-s += "abc";
+Console.WriteLine($"Sigma({sigmaExample}) = {math.Sigma(sigmaExample)}\n");
+
+
+Console.WriteLine("============================================");
+Console.WriteLine("🌐 BFS SHORTEST PATH TEST");
+Console.WriteLine("============================================");
+
+// Building tree
+var target = new TreeNode(7);
+var node4 = new TreeNode(4, new[] { target });
+var node5 = new TreeNode(5);
+var node6 = new TreeNode(6);
+
+var node2 = new TreeNode(2, new[] { node4, node5 });
+var node3 = new TreeNode(3, new[] { node6 });
+
+var root = new TreeNode(1, new[] { node2, node3 });
+
+var bfs = new BFS();
+var path = bfs.ShortestPath(root, target);
+
+// Pretty print path
+Console.Write($"Path from root to target {target.val}: ");
+
+if (path.Count == 0)
+{
+    Console.WriteLine("No path found ❌");
+}
+else
+{
+    for (int i = 0; i < path.Count; i++)
+    {
+        Console.Write(path[i].val);
+        if (i < path.Count - 1)
+            Console.Write(" -> ");
+    }
+    Console.WriteLine(" ✅");
+}
+
+Console.WriteLine("\n Tests Finished!");
+
+// used chatgpt to generate this test boilerplate bullshit
 
 public class Tree
 {
@@ -72,6 +114,80 @@ public class Maths
     }
 }
 
+public class BFS
+{
+    public void BreadthFirstSearch(TreeNode root)
+    {
+        HashSet<TreeNode> visited = new HashSet<TreeNode>();
+        Queue<TreeNode> q = new Queue<TreeNode>();
+
+        q.Enqueue(root);
+
+        while(q.Count > 0)
+        {
+            TreeNode cur = q.Dequeue();
+
+            // do some proccess here, like calculating the shortest path on unweighted graphs/trees, the 
+            // shortest path from Node A to Target is always the first time Target is hit 
+
+            foreach(TreeNode child in cur.children)
+            {
+                if (!visited.Contains(child))
+                {
+                    visited.Add(child);
+                    q.Enqueue(child);
+                }
+            }
+        }
+    }
+
+    public List<TreeNode> ShortestPath(TreeNode root, TreeNode target)
+    {
+        HashSet<TreeNode> visited = new HashSet<TreeNode>();
+        Queue<TreeNode> q = new Queue<TreeNode>();
+        Dictionary<TreeNode, TreeNode> parent = new Dictionary<TreeNode, TreeNode>();
+
+        q.Enqueue(root);
+        parent[root] = null;
+        visited.Add(root);
+
+        while (q.Count > 0)
+        {
+            TreeNode cur = q.Dequeue();
+
+            if(cur == target)
+            {
+                return BuildPath(parent, target);
+            }
+
+            foreach (TreeNode child in cur.children)
+            {
+                if (!visited.Contains(child))
+                {
+                    visited.Add(child);
+                    parent[child] = cur;
+                    q.Enqueue(child);
+                }
+            }
+        }
+
+        return new List<TreeNode>();
+    }
+
+    private List<TreeNode> BuildPath(Dictionary<TreeNode, TreeNode> parent, TreeNode target)
+    {
+        List<TreeNode> path = new List<TreeNode>();
+        TreeNode cur = target;
+
+        while(cur is not null)
+        {
+            path.Add(cur);
+            cur = parent[cur];
+        }
+        path.Reverse();
+        return path;
+    }
+}
 public class DFS
 {
     public int SumOfTheTree = 0;
