@@ -49,24 +49,3 @@ sharp-dsa/
 ```
 
 ---
-
-## Philosophy
-
-- **Reinvent the wheel** — the point is to understand it, not ship it
-- **Comment the why**, not the what
-- **Measure complexity** — every non-trivial implementation gets its Big O noted
-- **Keep it readable** — future me will thank present me
-
----
-
-## Notes to self
-
-```
-// If it compiles it ships (just kidding, please test)
-// O(n²) is acceptable while learning, not forever
-// When in doubt, draw the recursion tree
-```
-
----
-
-*Nicolas — ongoing*
