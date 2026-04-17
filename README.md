@@ -42,7 +42,7 @@ sharp-dsa/
 │   ├── Sorting/         # Merge, quick, heap, radix
 │   ├── Searching/       # Binary search, interpolation
 │   ├── Graph/           # BFS, DFS, Dijkstra, A*
-│   ├── DynamicProg/     # Memoization and tabulation patterns
+│   ├── DynamicProg/     # Memoization and tabulation patterns 
 │   └── Backtracking/    # N-Queens, sudoku solver
 │
 └── Challenges/          # Random problems I felt like solving
@@ -62,4 +62,4 @@ sharp-dsa/
                   `"\`-.
                 ...  `"`
 
-Appreciate the ASCII rat.
+Behold the ASCII rat. 
