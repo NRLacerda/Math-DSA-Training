@@ -1,6 +1,6 @@
 ﻿using DSA.DataStructures.Tree;
 using DSA.Algorithms.Graph;
-using DSA.Math.Sigma;
+using DSA.InternalMath.Sigma;
 
 // ─────────────────────────────────────────────
 //   DSA TEST SUITE  |  v1.0.0
@@ -80,10 +80,10 @@ else { PrintFail($"DFS Sum mismatch! Got {dfs.SumOfTheTree}, expected {expectedS
 // ── Test 2: Sigma ─────────────────────────────
 PrintHeader("MATH  |  Sigma (Triangular Sum)", "🧮");
 
-Maths math = new Maths();
+Sigma math = new Sigma();
 int sigmaInput = 3;
 int sigmaExpected = 6;          // 1 + 2 + 3
-int sigmaResult = math.Sigma(sigmaInput);
+int sigmaResult = math.SigmaFromNumber(sigmaInput);
 bool sigmaPass = sigmaResult == sigmaExpected;
 
 PrintResult($"Σ({sigmaInput})", $"{sigmaResult}  (expected: {sigmaExpected})");

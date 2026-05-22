@@ -1,8 +1,8 @@
 namespace DSA.InternalMath.Sigma
 {
-    public class Maths
+    public class Sigma
     {
-        public int Sigma(int n)
+        public int SigmaFromNumber(int n)
         {
             return n * (n + 1) / 2;
         }
