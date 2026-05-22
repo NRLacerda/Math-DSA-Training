@@ -1,4 +1,4 @@
-﻿namespace DSATraining.sharp_dsa.Math.Factorial
+﻿namespace DSATraining.sharp_dsa.InternalMath.Factorial
 {
     public class Product
     {

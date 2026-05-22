@@ -15,7 +15,7 @@ namespace DSA.Challenges.MeetingRooms
                 
                 for(int j = 0; i < meets.Length; j++)
                 {
-                    if(i == j) contine; // to prevent first iteration logic/
+                    if(i == j) continue; // to prevent first iteration logic/
 
                     bool overlaps = meets[i][0] < meets[j][1] && meets[j][0] < meets[i][1];
 

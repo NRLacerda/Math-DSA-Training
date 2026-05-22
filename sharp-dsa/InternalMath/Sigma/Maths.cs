@@ -1,4 +1,4 @@
-namespace DSA.Math.Sigma
+namespace DSA.InternalMath.Sigma
 {
     public class Maths
     {
